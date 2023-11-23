@@ -13,12 +13,9 @@ class CartManager {
         await fs.access(this.path);
         const data = await fs.readFile(this.path, "utf8");
         this.carts = JSON.parse(data);
-        console.log("Carts loaded successfully.");
         } catch (error) {
         if (error.code === "ENOENT") {
-            console.log("File not found:", this.path);
         } else {
-            console.error("Error loading carts:", error.message);
             this.carts = [];
         }
         }

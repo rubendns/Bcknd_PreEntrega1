@@ -15,7 +15,6 @@ productRouter.get("/", async (req, res) => {
 
         res.send({ products });
     } catch (error) {
-        console.error("Error getting products:", error.message);
         res.status(500).send({ error: "Internal Server Error" });
     }
     });
@@ -52,7 +51,6 @@ productRouter.get("/", async (req, res) => {
 
     productRouter.delete("/:pid", async (req, res) => {
     try {
-        console.log(req.params.pid);
         await productManager.deleteProduct(req.params.pid);
         res.send({ message: "Product deleted successfully" });
     } catch (error) {

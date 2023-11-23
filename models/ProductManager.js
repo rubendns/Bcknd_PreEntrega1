@@ -16,9 +16,7 @@ class ProductManager {
         this.products = JSON.parse(data);
         } catch (error) {
         if (error.code === "ENOENT") {
-            console.log("File not found:", this.path);
         } else {
-            console.error("Error loading products:", error.message);
             this.products = [];
         }
         }
