@@ -52,6 +52,7 @@ productRouter.get("/", async (req, res) => {
 
     productRouter.delete("/:pid", async (req, res) => {
     try {
+        console.log(req.params.pid);
         await productManager.deleteProduct(req.params.pid);
         res.send({ message: "Product deleted successfully" });
     } catch (error) {

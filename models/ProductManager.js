@@ -30,7 +30,15 @@ class ProductManager {
     }
 
     addProduct(productData) {
-        const { title, description, price, thumbnail, code, stock } = productData;
+        const {
+        title,
+        description,
+        price,
+        thumbnail,
+        code,
+        stock,
+        status = true,
+        } = productData;
 
         if (
         !title ||
@@ -59,7 +67,8 @@ class ProductManager {
         price,
         thumbnail,
         code,
-        stock
+        stock,
+        status
         );
         this.products.push(newProduct);
         this.saveProducts();
@@ -90,10 +99,12 @@ class ProductManager {
         return product;
     }
 
-    updateProduct(id, newProduct) {
+    async updateProduct(id, newProduct) {
+        const productId = parseInt(id, 10);
         const productIndex = this.products.findIndex(
-        (product) => product.id === id
+        (product) => product.id === productId
         );
+
         if (productIndex !== -1) {
         const existingProduct = this.products[productIndex];
 
@@ -107,7 +118,7 @@ class ProductManager {
 
         Object.assign(existingProduct, newProduct);
         this.products[productIndex] = existingProduct;
-        this.saveProducts();
+        await this.saveProducts();
         return existingProduct;
         } else {
         throw new Error("Product not found");
@@ -115,9 +126,12 @@ class ProductManager {
     }
 
     async deleteProduct(productId) {
+        const productIdInt = parseInt(productId, 10);
+
         const index = this.products.findIndex(
-        (product) => product.id === productId
+        (product) => product.id === productIdInt
         );
+
         if (index !== -1) {
         this.products.splice(index, 1);
         await this.saveProducts();
