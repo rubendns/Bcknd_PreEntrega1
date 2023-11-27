@@ -15,4 +15,6 @@ app.use('/api/carts', cartRouter);
 // Iniciar servidor
 app.listen(port, () => {
     console.log(`Servidor corriendo en el puerto ${port}`);
+    console.log("Go to http://localhost:8080/api/products to see all products.");
+    console.log("Go to http://localhost:8080/api/carts/:cid to view the contents of a cart.");
 });

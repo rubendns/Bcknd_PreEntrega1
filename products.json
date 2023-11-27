@@ -118,5 +118,15 @@
     "code": "auu399",
     "stock": 8,
     "status": false
+  },
+  {
+    "id": 15,
+    "title": "producto prueba 15",
+    "description": "Este es un producto de prueba",
+    "price": 111.79,
+    "thumbnail": "image15",
+    "code": "gim719",
+    "stock": 24,
+    "status": false
   }
 ]
